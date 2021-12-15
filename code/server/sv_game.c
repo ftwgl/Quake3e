@@ -393,6 +393,8 @@ static intptr_t SV_GameSystemCalls( intptr_t *args ) {
 		// exclude some game module cvars fk off FS
 		if (!Q_stricmp((char*)VMA(1), "sv_fps") ||
 			!Q_stricmp((char*)VMA(1), "g_failedvotetime") ||
+			!Q_stricmp((char*)VMA(1), "cl_maxpackets") ||
+			!Q_stricmp((char*)VMA(1), "com_maxfps") ||
 			!Q_stricmp((char*)VMA(1), "snaps")) {
 			return 0;
 		}

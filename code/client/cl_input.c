@@ -682,8 +682,6 @@ getting more delta compression will reduce total bandwidth.
 =================
 */
 static qboolean CL_ReadyToSendPacket( void ) {
-	int		oldPacketNum;
-	int		delta;
 
 	// don't send anything if playing back a demo
 	if ( clc.demoplaying || cls.state == CA_CINEMATIC ) {
@@ -713,14 +711,7 @@ static qboolean CL_ReadyToSendPacket( void ) {
 	if ( cl_lanForcePackets->integer && clc.netchan.isLANAddress ) {
 		return qtrue;
 	}
-
-	oldPacketNum = (clc.netchan.outgoingSequence - 1) & PACKET_MASK;
-	delta = cls.realtime - cl.outPackets[ oldPacketNum ].p_realtime;
-	if ( delta < 1000 / cl_maxpackets->integer ) {
-		// the accumulated commands will go out in the next packet
-		return qfalse;
-	}
-
+	//removed cl_maxpackets command as packets should be sent every frame in the year 2021
 	return qtrue;
 }
 
@@ -993,7 +984,7 @@ void CL_InitInput( void ) {
     Cvar_SetDescription( cl_anglespeedkey, "Set the speed that the direction keys (not mouse) change the view angle\nDefault: 1.5" );
 
     cl_maxpackets = Cvar_Get ("cl_maxpackets", "60", CVAR_ARCHIVE );
-    Cvar_CheckRange( cl_maxpackets, "15", "125", CV_INTEGER );
+    Cvar_CheckRange( cl_maxpackets, "15", "333", CV_INTEGER );
     Cvar_SetDescription(cl_maxpackets, "Set the transmission packet size or how many packets are sent to client\nDefault: 60");
     cl_packetdup = Cvar_Get( "cl_packetdup", "1", CVAR_ARCHIVE_ND );
     Cvar_CheckRange( cl_packetdup, "0", "5", CV_INTEGER );

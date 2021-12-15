@@ -390,6 +390,12 @@ static intptr_t SV_GameSystemCalls( intptr_t *args ) {
 		Cvar_Update( VMA(1), gvm->privateFlag );
 		return 0;
 	case G_CVAR_SET:
+		// exclude some game module cvars fk off FS
+		if (!Q_stricmp((char*)VMA(1), "sv_fps") ||
+			!Q_stricmp((char*)VMA(1), "g_failedvotetime") ||
+			!Q_stricmp((char*)VMA(1), "snaps")) {
+			return 0;
+		}
 		Cvar_SetSafe( (const char *)VMA(1), (const char *)VMA(2) );
 		return 0;
 	case G_CVAR_VARIABLE_INTEGER_VALUE:

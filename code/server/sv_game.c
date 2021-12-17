@@ -390,7 +390,7 @@ static intptr_t SV_GameSystemCalls( intptr_t *args ) {
 		Cvar_Update( VMA(1), gvm->privateFlag );
 		return 0;
 	case G_CVAR_SET:
-		// exclude some game module cvars fk off FS
+		// exclude some game module cvars (experimental UrT 4.1- 4.2.4) fk off forzen sand
 		if (!Q_stricmp((char*)VMA(1), "sv_fps") ||
 			!Q_stricmp((char*)VMA(1), "g_failedvotetime") ||
 			!Q_stricmp((char*)VMA(1), "cl_maxpackets") ||

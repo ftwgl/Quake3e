@@ -40,7 +40,7 @@ NO_DMAHD           = 0
 USE_FTWGL          = 1
 USE_SERVER_DEMO    = 1
 
-USE_RENDERER_DLOPEN = 0
+USE_RENDERER_DLOPEN = 1
 
 CNAME            = ftwgl-20211117
 DNAME            = quake3e.ded

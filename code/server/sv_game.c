@@ -394,6 +394,7 @@ static intptr_t SV_GameSystemCalls( intptr_t *args ) {
 		if (!Q_stricmp((char*)VMA(1), "sv_fps") ||
 			!Q_stricmp((char*)VMA(1), "g_failedvotetime") ||
 			!Q_stricmp((char*)VMA(1), "cl_maxpackets") ||
+			!Q_stricmp((char*)VMA(1), "rate") ||
 			!Q_stricmp((char*)VMA(1), "com_maxfps") ||
 			!Q_stricmp((char*)VMA(1), "snaps")) {
 			return 0;

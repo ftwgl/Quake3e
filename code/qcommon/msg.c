@@ -716,7 +716,7 @@ const netField_t entityStateFields[] =
     { NETF(angles[0]), 0 },
     { NETF(time), 32 },
     { NETF(apos.trTime), 32 },
-    { NETF(apos.trDuration), 32 },
+    { NETF(apos.trDuration), 50 },
     { NETF(apos.trBase[2]), 0 },
     { NETF(apos.trDelta[0]), 0 },
     { NETF(apos.trDelta[1]), 0 },

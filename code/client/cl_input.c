@@ -712,8 +712,14 @@ static qboolean CL_ReadyToSendPacket( void ) {
 		return qtrue;
 	}
 	//removed cl_maxpackets command as packets should be sent every frame in the year 2021
+	//oldPacketNum = (clc.netchan.outgoingSequence - 1) & PACKET_MASK;
+	//delta = cls.realtime -  cl.outPackets[ oldPacketNum ].p_realtime;
+	//if ( delta < 1000 / cl_maxpackets->integer ) {
+		// the accumulated commands will go out in the next packet
+		//return qfalse;
+	//}
+
 	return qtrue;
-}
 
 
 /*
@@ -982,11 +988,10 @@ void CL_InitInput( void ) {
     Cvar_SetDescription( cl_pitchspeed, "Set the pitch rate when +lookup and/or +lookdown are active\nDefault: 140" );
     cl_anglespeedkey = Cvar_Get( "cl_anglespeedkey", "1.5", 0 );
     Cvar_SetDescription( cl_anglespeedkey, "Set the speed that the direction keys (not mouse) change the view angle\nDefault: 1.5" );
-
-    cl_maxpackets = Cvar_Get ("cl_maxpackets", "60", CVAR_ARCHIVE );
-    Cvar_CheckRange( cl_maxpackets, "15", "333", CV_INTEGER );
-    Cvar_SetDescription(cl_maxpackets, "Set the transmission packet size or how many packets are sent to client\nDefault: 60");
-    cl_packetdup = Cvar_Get( "cl_packetdup", "1", CVAR_ARCHIVE_ND );
+//  cl_maxpackets = Cvar_Get ("cl_maxpackets", "125", CVAR_ARCHIVE );
+//  Cvar_CheckRange( cl_maxpackets, "60", "333", CV_INTEGER );
+//  Cvar_SetDescription(cl_maxpackets, "Set the transmission packet size or how many packets are sent to client\nDefault: 60");
+    cl_packetdup = Cvar_Get( "cl_packetdup", "0", CVAR_ARCHIVE_ND );
     Cvar_CheckRange( cl_packetdup, "0", "5", CV_INTEGER );
     Cvar_SetDescription(cl_packetdup, "How many times should a packet try to resend to the server\nDefault: 1");
 

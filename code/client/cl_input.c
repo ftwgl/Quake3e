@@ -711,15 +711,16 @@ static qboolean CL_ReadyToSendPacket( void ) {
 	if ( cl_lanForcePackets->integer && clc.netchan.isLANAddress ) {
 		return qtrue;
 	}
-	//removed cl_maxpackets command as packets should be sent every frame in the year 2021
-	//oldPacketNum = (clc.netchan.outgoingSequence - 1) & PACKET_MASK;
-	//delta = cls.realtime -  cl.outPackets[ oldPacketNum ].p_realtime;
-	//if ( delta < 1000 / cl_maxpackets->integer ) {
-		// the accumulated commands will go out in the next packet
-		//return qfalse;
-	//}
-
-	return qtrue;
+//removed cl_maxpackets command as packets should be sent every frame in the year 2021
+//    
+//	oldPacketNum = (clc.netchan.outgoingSequence - 1) & PACKET_MASK;
+//	delta = cls.realtime -  cl.outPackets[ oldPacketNum ].p_realtime;
+//	if ( delta < 1000 / cl_maxpackets->integer ) {
+//		// the accumulated commands will go out in the next packet
+//		return qfalse;
+//	}
+	return qtrue; //setting qtrue in any case always sends teh packets 
+}
 
 
 /*

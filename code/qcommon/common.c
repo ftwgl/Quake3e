@@ -3650,9 +3650,9 @@ void Com_Init( char *commandLine ) {
 	// init commands and vars
 	//
 #ifndef DEDICATED
-	com_maxfps = Cvar_Get( "com_maxfps", "125", CVAR_PROTECTED); // try to force that in some light way
+	com_maxfps = Cvar_Get( "com_maxfps", "2000", CVAR_PROTECTED); // try to force that in some light way
     com_maxfpsUnfocused = Cvar_Get( "com_maxfpsUnfocused", "0", CVAR_ARCHIVE_ND );
-	Cvar_CheckRange( com_maxfps, "0", "333", CV_INTEGER );
+	Cvar_CheckRange( com_maxfps, "0", "2000", CV_INTEGER );
 	Cvar_CheckRange( com_maxfpsUnfocused, "0", "333", CV_INTEGER );
     Cvar_SetDescription(com_maxfps, "Set the max number of frames per second across the whole system, client and server\nDefault: 125");
     Cvar_SetDescription(com_maxfpsUnfocused, "Set the max number of frames per second when the client is minimized or not in the background\nDefault: 60");

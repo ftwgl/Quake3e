@@ -1789,7 +1789,7 @@ void SV_UserinfoChanged( client_t *cl, qboolean updateUserinfo, qboolean runFilt
 		if ( val[0] )
 			cl->rate = atoi( val );
 		else
-			cl->rate = 10000; // was 3000
+			cl->rate = 0000; // was 3000
 
 		if ( sv_maxRate->integer ) {
 			if ( cl->rate > sv_maxRate->integer )
@@ -1805,7 +1805,7 @@ void SV_UserinfoChanged( client_t *cl, qboolean updateUserinfo, qboolean runFilt
 	// snaps command
 	val = Info_ValueForKey( cl->userinfo, "snaps" );
 	if ( val[0] && !NET_IsLocalAddress( &cl->netchan.remoteAddress ) )
-		i = atoi( val );
+		i = sv_fps->integer;
 	else
 		i = sv_fps->integer; // sync with server
 
